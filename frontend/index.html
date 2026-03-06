@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HireAI | Intelligent Hiring & Career Guidance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+<body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <div class="grid-overlay"></div>
+
+    <section id="gateway" class="gateway">
+        <div class="hero-card gateway-hero float-up">
+            <div class="brand-lockup">
+                <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0" x2="1" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#19c6ff"></stop>
+                            <stop offset="100%" stop-color="#44f7b0"></stop>
+                        </linearGradient>
+                    </defs>
+                    <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#logoGradient)"></rect>
+                    <path d="M17 37L26 28L33 34L47 20" fill="none" stroke="#082033" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <circle cx="47" cy="20" r="4" fill="#082033"></circle>
+                </svg>
+                <span>HireAI</span>
+            </div>
+            <p class="eyebrow">HireAI Platform</p>
+            <h1>Intelligent Hiring Meets Career Guidance</h1>
+            <p class="subtitle">One platform. Two modes. Recruiters screen and rank. Students improve and grow.</p>
+            <div class="role-grid">
+                <button type="button" class="role-btn tilt-card recruiter-theme" data-role="recruiter">
+                    <span class="role-icon recruiter-icon" aria-hidden="true">
+                        <span class="cv-stack">
+                            <span class="cv cv-a"></span>
+                            <span class="cv cv-b"></span>
+                            <span class="cv cv-c"></span>
+                            <span class="lens"></span>
+                            <span class="handle"></span>
+                        </span>
+                    </span>
+                    <span class="badge">Recruiter</span>
+                    <h2>Screen & Rank Candidates</h2>
+                    <p>Upload JD and resume batch to get match score, skills gap, and shortlist decisions.</p>
+                </button>
+                <button type="button" class="role-btn tilt-card student-theme" data-role="student">
+                    <span class="role-icon student-icon" aria-hidden="true">
+                        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_3rwasyjy.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                    </span>
+                    <span class="badge">Student</span>
+                    <h2>Build Career Readiness</h2>
+                    <p>Get resume review, skill roadmap, and in-demand role recommendations.</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="recruiter-app" class="app-section hidden">
+        <header class="topbar">
+            <div>
+                <div class="mini-brand">
+                    <svg class="mini-logo" viewBox="0 0 64 64" aria-hidden="true">
+                        <rect x="8" y="8" width="48" height="48" rx="14" fill="#19c6ff"></rect>
+                        <path d="M20 33L28 26L35 31L44 22" fill="none" stroke="#071723" stroke-width="4" stroke-linecap="round"></path>
+                    </svg>
+                    <strong>HireAI Recruiter</strong>
+                </div>
+                <p class="eyebrow">Recruiter Workspace</p>
+                <h2>Candidate Intelligence Dashboard</h2>
+            </div>
+            <button type="button" class="ghost-btn" id="back-from-recruiter">Switch Role</button>
+        </header>
+
+        <main class="panel-grid">
+            <article class="panel form-panel">
+                <h3>Screening Input</h3>
+                <label for="job-desc">Job Description</label>
+                <textarea id="job-desc" rows="8" placeholder="Paste detailed job requirements..."></textarea>
+
+                <label for="recruiter-files">Resume PDFs</label>
+                <div id="drop-zone" class="drop-zone">
+                    <p>Drag and drop resume PDFs here or click to browse.</p>
+                    <input id="recruiter-files" type="file" accept=".pdf" multiple />
+                </div>
+                <div id="recruiter-file-list" class="chip-wrap"></div>
+
+                <button type="button" id="recruiter-submit" class="primary-btn">Analyze Candidates</button>
+                <p id="recruiter-error" class="error-text"></p>
+            </article>
+
+            <article class="panel metrics-panel">
+                <h3>Batch Insights</h3>
+                <svg class="panel-illustration" viewBox="0 0 240 120" aria-hidden="true">
+                    <rect x="10" y="25" width="220" height="75" rx="14" fill="rgba(25,198,255,0.08)" stroke="rgba(25,198,255,0.4)"></rect>
+                    <rect x="28" y="54" width="22" height="30" rx="5" fill="#19c6ff"></rect>
+                    <rect x="62" y="42" width="22" height="42" rx="5" fill="#44f7b0"></rect>
+                    <rect x="96" y="36" width="22" height="48" rx="5" fill="#19c6ff"></rect>
+                    <path d="M132 78L154 59L172 66L205 42" fill="none" stroke="#44f7b0" stroke-width="4" stroke-linecap="round"></path>
+                </svg>
+                <div class="metric-grid">
+                    <div class="metric-card tilt-card">
+                        <span>Total Candidates</span>
+                        <strong id="metric-total">0</strong>
+                    </div>
+                    <div class="metric-card tilt-card">
+                        <span>Shortlisted</span>
+                        <strong id="metric-shortlisted">0</strong>
+                    </div>
+                    <div class="metric-card tilt-card">
+                        <span>Average Match</span>
+                        <strong id="metric-average">0%</strong>
+                    </div>
+                    <div class="metric-card tilt-card">
+                        <span>Highest Match</span>
+                        <strong id="metric-highest">0%</strong>
+                    </div>
+                </div>
+                <div id="recruiter-loader" class="loader hidden">Processing resumes with AI...</div>
+            </article>
+        </main>
+
+        <section class="panel results-panel">
+            <div class="panel-head">
+                <h3>Ranked Candidates</h3>
+                <div class="panel-actions">
+                    <button type="button" class="ghost-btn small-btn" id="export-csv">Export CSV</button>
+                    <button type="button" class="ghost-btn small-btn" id="export-json">Export JSON</button>
+                    <button type="button" class="ghost-btn small-btn" id="export-report">Print Report</button>
+                </div>
+            </div>
+            <div class="charts-grid">
+                <article class="chart-card">
+                    <h4>Status Breakdown</h4>
+                    <div class="chart-canvas-wrap">
+                        <canvas id="status-chart" width="360" height="220"></canvas>
+                    </div>
+                </article>
+                <article class="chart-card">
+                    <h4>Top Match Scores</h4>
+                    <div class="chart-canvas-wrap">
+                        <canvas id="score-chart" width="360" height="220"></canvas>
+                    </div>
+                </article>
+            </div>
+            <div id="candidate-results" class="results-grid"></div>
+        </section>
+    </section>
+
+    <section id="student-app" class="app-section hidden">
+        <header class="topbar">
+            <div>
+                <div class="mini-brand">
+                    <svg class="mini-logo" viewBox="0 0 64 64" aria-hidden="true">
+                        <rect x="8" y="8" width="48" height="48" rx="14" fill="#44f7b0"></rect>
+                        <path d="M18 28L32 20L46 28L32 36Z" fill="#063020"></path>
+                        <rect x="29" y="36" width="6" height="10" rx="2" fill="#063020"></rect>
+                    </svg>
+                    <strong>HireAI Student</strong>
+                </div>
+                <p class="eyebrow">Student Workspace</p>
+                <h2>Career Guidance Dashboard</h2>
+            </div>
+            <button type="button" class="ghost-btn" id="back-from-student">Switch Role</button>
+        </header>
+
+        <section class="student-dashboard">
+            <article class="panel student-metrics">
+                <div class="metric-card">
+                    <span>Resume Score</span>
+                    <strong id="student-score">--</strong>
+                </div>
+                <div class="metric-card">
+                    <span>Readiness</span>
+                    <strong id="student-readiness">Not Assessed</strong>
+                </div>
+                <div class="metric-card">
+                    <span>Recommended Roles</span>
+                    <strong id="student-role-count">0</strong>
+                </div>
+                <div class="metric-card">
+                    <span>Action Progress</span>
+                    <strong id="student-action-progress">0%</strong>
+                </div>
+            </article>
+            <article class="panel student-overview">
+                <h3>Skill Gap Overview</h3>
+                <div id="student-missing-overview" class="skill-list"><span class="skill">Run resume review to see gaps</span></div>
+                <h3 class="mini-heading">Roadmap Snapshot</h3>
+                <p id="student-roadmap-overview" class="muted-text">Use Skill Evaluation to generate your personalized 1-2 year roadmap.</p>
+            </article>
+            <article class="panel student-actions">
+                <h3>Action Tracker</h3>
+                <button type="button" id="generate-action-tracker" class="primary-btn">Generate AI Action Plan</button>
+                <div id="student-actions-loader" class="loader hidden">Generating action plan...</div>
+                <p id="student-actions-error" class="error-text"></p>
+                <div id="student-action-items" class="action-list">
+                    <p class="muted-text">Generate action plan after running Resume Review and Skill Evaluation.</p>
+                </div>
+            </article>
+            <article class="panel student-saved">
+                <h3>Saved Recommendations</h3>
+                <div id="saved-roles-board" class="saved-roles">No saved roles yet.</div>
+            </article>
+        </section>
+
+        <main class="student-layout">
+            <aside class="panel tabs-panel">
+                <h3>Tools</h3>
+                <button type="button" class="tab-btn active" data-tab="resume-tab">Resume Review</button>
+                <button type="button" class="tab-btn" data-tab="skills-tab">Skill Evaluation</button>
+                <button type="button" class="tab-btn" data-tab="roles-tab">Role Recommendations</button>
+            </aside>
+
+            <section class="panel tab-content active" id="resume-tab">
+                <h3>AI Resume Review</h3>
+                <div class="form-group">
+                    <label for="student-resume-file">Resume PDF</label>
+                    <input id="student-resume-file" type="file" accept=".pdf" />
+                </div>
+                <div class="form-group">
+                    <label for="desired-role">Desired Role (Optional)</label>
+                    <input id="desired-role" type="text" placeholder="e.g., Backend Developer" />
+                </div>
+                <button type="button" id="student-resume-submit" class="primary-btn">Review Resume</button>
+                <p id="student-resume-error" class="error-text"></p>
+                <div id="student-resume-loader" class="loader hidden">Analyzing resume...</div>
+                <div id="resume-review-output" class="student-output"></div>
+            </section>
+
+            <section class="panel tab-content" id="skills-tab">
+                <h3>Skill Evaluation Test</h3>
+                <div class="form-group">
+                    <label for="known-skills">Known Skills (comma separated)</label>
+                    <input id="known-skills" type="text" placeholder="Python, SQL, APIs" />
+                </div>
+                <div class="form-group">
+                    <label for="interests">Interests (comma separated)</label>
+                    <input id="interests" type="text" placeholder="AI, analytics, backend" />
+                </div>
+                <div class="form-group">
+                    <label for="preferred-domains">Preferred Domains (comma separated)</label>
+                    <input id="preferred-domains" type="text" placeholder="Web Development, Data Science" />
+                </div>
+                <button type="button" id="student-skills-submit" class="primary-btn">Evaluate Skills</button>
+                <p id="student-skills-error" class="error-text"></p>
+                <div id="student-skills-loader" class="loader hidden">Building skill roadmap...</div>
+                <div id="skills-output" class="student-output"></div>
+            </section>
+
+            <section class="panel tab-content" id="roles-tab">
+                <h3>Job & Internship Recommendations</h3>
+                <div class="form-group">
+                    <label for="student-reco-file">Resume PDF</label>
+                    <input id="student-reco-file" type="file" accept=".pdf" />
+                </div>
+                <button type="button" id="student-reco-submit" class="primary-btn">Get Recommendations</button>
+                <p id="student-reco-error" class="error-text"></p>
+                <div id="student-reco-loader" class="loader hidden">Fetching recommendations...</div>
+                <div id="roles-output" class="results-grid"></div>
+            </section>
+        </main>
+    </section>
+
+    <div id="global-loader" class="global-loader hidden" aria-live="polite">
+        <div class="global-loader-card">
+            <div class="ai-pulse">
+                <span></span><span></span><span></span>
+            </div>
+            <h3 id="global-loader-title">Please wait</h3>
+            <p id="global-loader-message">AI is analyzing your request...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
